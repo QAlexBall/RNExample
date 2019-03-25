@@ -7,32 +7,26 @@
  */
 
 import React, {Component} from 'react';
-import { Image, Platform, StyleSheet, Text, View} from 'react-native';
+import { Image, Platform, StyleSheet, Text, View, FlatList} from 'react-native';
 
+/*
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-
-var MOCKED_MOVIES_DATA = [
-  {
-    title: "title",
-    year: "2015",
-    posters: { thumbnail: "http://i.imgur.com/UePbdph.jpg" }
-  }
-];
+*/
 
 var REQUEST_URL = "https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json";
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      movies: null,
+      data: [],
+      loaded: false
     };
     this.fetchData = this.fetchData.bind(this);
   }
@@ -48,18 +42,43 @@ export default class App extends Component<Props> {
         this.setState({
           data: this.state.data.concat(responseData.movies),
           loaded: true
-        })
-      })
+        });
+      });
+  }
+  
+  render() {
+    if (!this.state.loaded) {
+      return this.renderLoadingView();
+    }
+
+    return (
+      <FlatList
+        data={this.state.data}
+        renderItem={this.renderMovie}
+        style={styles.list}
+        keyExtractor={item => item.id}
+      />
+    );
   }
 
-  render() {
-    var movie = MOCKED_MOVIES_DATA[0];
-    return (  
-    <View style={styles.container}>
-        <Image source={{uri: movie.posters.thumbnail }} style={styles.thumbnail} />
+  renderLoadingView() {
+    return (
+      <View style={styles.container}>
+        <Text> Loading movies... </Text>
+      </View>
+    );
+  }
+
+  renderMovie({ item }) {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={{uri: item.posters.thumbnail}}
+          style={styles.thumbnail}
+        />
         <View style={styles.rightContainer}>
-          <Text style={styles.title}> {movie.title} </Text>
-          <Text style={styles.year}> {movie.year} </Text>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.year}>{item.year}</Text>
         </View>
       </View>
     );
@@ -89,4 +108,8 @@ const styles = StyleSheet.create({
   year: {
     textAlign: 'center',
   },
+  list: {
+    paddingTop: 20,
+    backgroundColor: "#F5FCFF"
+  }
 });
