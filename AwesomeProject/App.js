@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, Alert, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, Alert, Button, ScrollView } from 'react-native';
 
 export class HelloWorldApp extends Component {
   render() {
@@ -261,7 +261,7 @@ export class PizzaTranslator extends Component {
 }
 
 
-export default class ButtonBasics extends Component {
+export class ButtonBasics extends Component {
   _onPressButton() {
     Alert.alert('You tapped the button!');
   }
@@ -298,5 +298,42 @@ export default class ButtonBasics extends Component {
     );
   }
 }
-
-
+export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+  render() {
+      return (
+        <ScrollView>
+          <Text style={{fontSize:96}}>Scroll me plz</Text>
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Text style={{fontSize:96}}>If you like</Text>
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Text style={{fontSize:96}}>Scrolling down</Text>
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Text style={{fontSize:96}}>What's the best</Text>
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Text style={{fontSize:96}}>Framework around?</Text>
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+          <Text style={{fontSize:80}}>React Native</Text>
+        </ScrollView>
+    );
+  }
+}
