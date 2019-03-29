@@ -16,6 +16,7 @@ class Header extends Component {
     this._updateThemeColor()
     store.subscribe(() => this._updateThemeColor())
   }
+
   _updateThemeColor () {
     const { store } = this.context
     const state = store.getState()
