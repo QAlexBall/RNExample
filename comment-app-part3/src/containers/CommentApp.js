@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CommentInput from './CommentInput'
 import CommentList from './CommentList'
 import Counter from '../components/Counter'
+import Article from './Article'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 export default class CommentApp extends Component {
   static propTypes = {
-    value: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-    onIncrementAsync: PropTypes.func.isRequired
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    incrementAsync: PropTypes.func.isRequired
   }
 
   render() {
@@ -19,7 +19,9 @@ export default class CommentApp extends Component {
         <Counter 
           value={this.props.value}
           onIncrement={ this.props.increment.bind(this) }
-          onDecrement={ this.props.decrement.bind(this) } />,
+          onDecrement={ this.props.decrement.bind(this) }
+          onIncrementAsync={this.props.incrementAsync.bind(this)} />
+        <Article  />
         <CommentInput />
         <CommentList />
       </div>
@@ -29,17 +31,20 @@ export default class CommentApp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter.value
+    value: state.counter
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     increment: () => {
-      dispatch('INCREMENT')
+      dispatch({ type: 'INCREMENT' })
     },
     decrement: () => {
-      dispatch('DECREMENT')
+      dispatch({ type: 'DECREMENT' })
+    },
+    incrementAsync: () => {
+      dispatch({ type: 'INCREMENT_ASYNC'})
     }
   }
 }

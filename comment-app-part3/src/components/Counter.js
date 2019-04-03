@@ -10,7 +10,7 @@ const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
     Increment
   </button>
   <button onClick={ onDecrement }>
-    Decrementu
+    Decrement
   </button>
   <hr />
   <div>
