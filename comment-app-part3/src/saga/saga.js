@@ -1,4 +1,4 @@
-import { put, delay, all, takeEvery } from 'redux-saga/effects'
+import { put, delay, all, call, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
 export function* helloSaga() {
@@ -15,18 +15,26 @@ export function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
-export function* getArticle () {
-  yield put({type: 'GET_ARTICLE', article: "after get"})
+function displayProp(obj){
+  var msg ="";
+  for(var name in obj){
+      msg += name+": "+ obj[name]+"\r\n ";
+  }
+  console.log(msg);
+} 
 
-  // yield axios.get(
-  //   "http://127.0.0.1:8000/jianshu/test/", 
-  //   { 
-  //     header: {'Access-Control-Allow-Origin': '*', },
-  //     useCredentails: true,
-  //   }
-  // ).then((result) => {
-  //   console.log(result)
-  // })
+export function* getArticle () {
+  const article = yield call(fetchArticle)
+  const result = JSON.parse(article.data)
+  displayProp(result)
+  yield delay(1000)
+  yield put({type: 'GET_ARTICLE', article: result[0].fields.title})
+}
+
+function fetchArticle () {
+  return axios.get(
+    "http://127.0.0.1:8000/jianshu/test/",
+  )
 }
 
 export function* watchGetArticle() {

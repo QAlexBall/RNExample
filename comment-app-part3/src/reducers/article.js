@@ -1,4 +1,5 @@
 const GET_ARTICLE = 'GET_ARTICLE'
+const GET_ARTICLE_ASYNC = 'GET_ARTICLE_ASYNC'
 
 export default function (state, action) {
   if (!state) {
@@ -7,8 +8,9 @@ export default function (state, action) {
 
   switch (action.type) {
     case GET_ARTICLE:
-      console.log(state)
       return { article: action.article }
+    case GET_ARTICLE_ASYNC:
+        return { article: 'please wait......'}
     default:
       return state
   }
