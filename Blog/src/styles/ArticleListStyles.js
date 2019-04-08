@@ -1,0 +1,10 @@
+export default styles = StyleSheet.create({
+    contanier: {
+        paddingTop: 22
+    },
+    item: {
+        padding: 110,
+        fontSize: 18,
+        height: 44,
+    },
+})
