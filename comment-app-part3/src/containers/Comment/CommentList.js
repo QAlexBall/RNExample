@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import CommentList from '../components/CommentList'
-import { initComments, deleteComment } from '../reducers/comments'
+import CommentList from '../../components/Comment/CommentList'
+import { initComments, deleteComment } from '../../reducers/comments'
 
 class CommentListContainer extends Component {
   static propTypes = {

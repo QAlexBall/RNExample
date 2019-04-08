@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Article from '../components/Article'
+import Article from '../../components/Article/Article'
 
 export class ArticleContainer extends Component {
   static propsTypes = {
@@ -30,10 +30,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getArticle: (article) => {
+    getArticle: () => {
       dispatch({type: 'GET_ARTICLE'})
     },
-    getArticleAsync: (article) => {
+    getArticleAsync: () => {
       dispatch({type: 'GET_ARTICLE_ASYNC'})
     }
   }

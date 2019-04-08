@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import CommentInput from './CommentInput'
-import CommentList from './CommentList'
-import Counter from '../components/Counter'
-import Article from './Article'
+import CommentInput from './Comment/CommentInput'
+import CommentList from './Comment/CommentList'
+import Counter from '../components/Counter/Counter'
+import ArticleList from './Article/ArticleList'
 import { connect } from 'react-redux'
 
 export default class CommentApp extends Component {
@@ -21,7 +21,8 @@ export default class CommentApp extends Component {
           onIncrement={ this.props.increment.bind(this) }
           onDecrement={ this.props.decrement.bind(this) }
           onIncrementAsync={this.props.incrementAsync.bind(this)} />
-        <Article  />
+        <ArticleList />
+        {/* <Article  /> */}
         <CommentInput />
         <CommentList />
       </div>

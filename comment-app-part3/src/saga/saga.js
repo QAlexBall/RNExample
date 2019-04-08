@@ -15,20 +15,13 @@ export function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
-function displayProp(obj){
-  var msg ="";
-  for(var name in obj){
-      msg += name+": "+ obj[name]+"\r\n ";
-  }
-  console.log(msg);
-} 
+
 
 export function* getArticle () {
   const article = yield call(fetchArticle)
   const result = JSON.parse(article.data)
-  displayProp(result)
   yield delay(1000)
-  yield put({type: 'GET_ARTICLE', article: result[0].fields.title})
+  yield put({type: 'GET_ARTICLE', article: [result[0].fields.title, result[1].fields.title]})
 }
 
 function fetchArticle () {
