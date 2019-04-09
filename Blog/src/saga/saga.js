@@ -15,13 +15,20 @@ export function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
-
-
 export function* getArticle () {
   const article = yield call(fetchArticle)
   yield delay(1000)
-  console.log("========================")
-  yield put({type: 'GET_ARTICLE', article: [article.data[0].title, article.data[1].title]})
+  yield put({type: 'GET_ARTICLE', articleList: [article.data[0], article.data[1]]})
+}
+
+export function* getArticleDetail () {
+    const article = yield call(fetchArticle)
+    yield delay(1000)
+    yield put({type: 'GET_ARTICLE_DETAIL_BY_INDEX', article: [article.data[0]]})
+}
+
+export function* changeArticleContent () {
+    getArticle()
 }
 
 function fetchArticle () {
@@ -32,6 +39,8 @@ function fetchArticle () {
 
 export function* watchGetArticle() {
   yield takeEvery('GET_ARTICLE_ASYNC', getArticle)
+  yield takeEvery('GET_ARTICLE_DETAIL', getArticleDetail)
+  yield takeEvery('CHNAGE_ARTICLE_CONTENT', changeArticleContent)
 }
 
 // single entry point to start all Sagas at once

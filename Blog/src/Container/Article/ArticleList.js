@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ArticleList from '../../Component/Article/ArticleList'
-import { View, Button } from 'react-native'
+import ArticleDetail from './ArticleDetail'
+
 class ArticlListContainer extends Component {
     static propTypes = {
         articles: PropTypes.any,
+        article: PropTypes.any,
+        status: PropTypes.any,
         onArticleDetail: PropTypes.func,
     }
 
@@ -13,18 +16,33 @@ class ArticlListContainer extends Component {
         this.props.getArticleAsync()
     }
 
+    handleArticleDetail () {
+        if (this.props.getArticleDetail) {
+            this.props.getArticleDetail()
+        }
+    }
+
     render () {
-        return (
-            <ArticleList 
-                articles={this.props.articles}
-                onArticleDetail={this.props.getArticleDetail} />
-        )
+        if (this.props.status == 'load article detail...') {
+            return (
+                <ArticleDetail
+                    article={this.props.articles} />
+            )
+        } 
+        else {
+            return (
+                <ArticleList 
+                    articles={this.props.articles}
+                    onArticleDetail={this.handleArticleDetail.bind(this)} />
+            )
+        }
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        articles: state.article.article
+        articles: state.article.articleList,
+        status: state.article.status,
     }
 }
 

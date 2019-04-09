@@ -6,16 +6,16 @@ import { View, FlatList, Text, StyleSheet} from 'react-native'
 export default class ArticleList extends Component {
     static propTypes = {
         articles: PropTypes.any,
-        onGetArticleDetial: PropTypes.func
+        onArticleDetail: PropTypes.func
     }
 
     static defaultProps = {
         articles: ['test', 'test1']
     }
     
-    handleGetArticleDetial () {
-        if (this.props.onGetArticleDetial) {
-            this.props.onGetArticleDetial()
+    handleGetArticleDetail () {
+        if (this.props.onArticleDetail) {
+            this.props.onArticleDetail()
         }
     }
 
@@ -23,7 +23,7 @@ export default class ArticleList extends Component {
         <View>
             <Article 
                 article={item}
-                onGetArticleDetial={this.handleGetArticleDetial} />
+                onArticleDetail={this.handleGetArticleDetail.bind(this)} />
         </View>
     )
 

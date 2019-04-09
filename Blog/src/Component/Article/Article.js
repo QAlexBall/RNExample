@@ -4,7 +4,7 @@ import Proptypes from 'prop-types'
 
 export default class Article extends Component {
     static propTypes = {
-        article: Proptypes.any
+        article: Proptypes.any,
     }
 
     constructor () {
@@ -12,13 +12,19 @@ export default class Article extends Component {
         this.state = { aritcle: ''}
     }
 
+    handleArticleDetail () {
+        if (this.props.onArticleDetail) {
+            this.props.onArticleDetail()
+        }
+    }
+
     render () {
         return (
         <View>
             <View>
-                <Text style={styles.textSize}>title: { this.props.article }</Text>
+                <Text style={styles.textSize}>{ this.props.article.title }</Text>
             </View>
-            <Button title="detail..." onPress={this.props.onGetArticleDetail}>
+            <Button title="detail..." onPress={this.handleArticleDetail.bind(this)}>
             </Button>
         </View>
         )

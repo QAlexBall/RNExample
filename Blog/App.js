@@ -31,6 +31,9 @@ const store = createStore(
 sagaMiddleware.run(rootSaga)
 
 export default class App extends Component {
+  constructor () {
+    super()
+  }
   render() {
     return (
       <View style={styles.container}>
