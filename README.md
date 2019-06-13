@@ -1,2 +1,6 @@
-# RNExample
-for learning react-native
+### Learning React
+
+![make_redux](./for_make_redux.png)
+
+
+
