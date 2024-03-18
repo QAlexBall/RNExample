@@ -20,9 +20,11 @@ export default function (state, action) {
 }
 
 export const getArticle = (article) => {
+  console.log("get aricle in reducer")
   return { type: GET_ARTICLE, article }
 }
 
 export const getArticleList = (article) => {
+  console.log("get articleList in reducer")
   return { type: GET_ARTICLE_LIST, article}
 }

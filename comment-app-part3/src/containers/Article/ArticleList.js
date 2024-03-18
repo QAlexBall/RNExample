@@ -56,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: 'GET_ARTICLE'})
     },
     getArticleAsync: () => {
+      console.log('get article async')
       dispatch({type: 'GET_ARTICLE_ASYNC'})
     }
   }

@@ -12,6 +12,7 @@ export function* incrementAsync() {
 }
 
 export function* watchIncrementAsync() {
+  console.log('watch increment async')
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 

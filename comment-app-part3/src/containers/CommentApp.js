@@ -39,6 +39,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     increment: () => {
+      console.log('increment # 42')
       dispatch({ type: 'INCREMENT' })
     },
     decrement: () => {
